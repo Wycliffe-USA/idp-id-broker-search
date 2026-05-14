@@ -77,8 +77,7 @@ resource "aws_s3_bucket_policy" "idp_id_broker_search" {
           AWS = var.bucket_policy_principals
         }
         Action   = "s3:GetObject"
-        #Resource = "arn:aws:s3:::${aws_s3_bucket.idp_id_broker_search.bucket}/*"
-        Resource = "*"
+        Resource = "arn:aws:s3:::${aws_s3_bucket.idp_id_broker_search.bucket}/*"
       },
       {
         Sid    = "PublicAccessChecksum"
@@ -158,8 +157,7 @@ resource "aws_s3_bucket_policy" "idp_id_broker_search_2" {
           AWS = var.bucket_policy_principals
         }
         Action   = "s3:GetObject"
-        #Resource = "arn:aws:s3:::${aws_s3_bucket.idp_id_broker_search_2.bucket}/*"
-        Resource = "*"
+        Resource = "arn:aws:s3:::${aws_s3_bucket.idp_id_broker_search_2.bucket}/*"
       },
       {
         Sid    = "PublicAccessChecksum"
