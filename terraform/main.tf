@@ -1,7 +1,12 @@
 
 // Create S3 bucket for uploading binary
+resource "random_string" "bucket_suffix" {
+  length  = 4
+  special = false
+}
+
 resource "aws_s3_bucket" "idp_id_broker_search" {
-  bucket        = "${var.app_name}-${var.aws_region}"
+  bucket        = "${var.app_name}-${var.aws_region}-${random_string.bucket_suffix.result}"
   force_destroy = false
 
   tags = {
@@ -90,7 +95,7 @@ resource "aws_s3_bucket_policy" "idp_id_broker_search" {
 // Create a second S3 bucket for uploading binary to a different region (crude form of replication)
 resource "aws_s3_bucket" "idp_id_broker_search_2" {
   provider      = aws.secondary
-  bucket        = "${var.app_name}-${var.aws_region_secondary}"
+  bucket        = "${var.app_name}-${var.aws_region_secondary}-${random_string.bucket_suffix.result}"
   force_destroy = true
 
   tags = {
