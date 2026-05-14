@@ -18,11 +18,11 @@ variable "aws_region_new_primary" {
   default = "us-east-2"
 }
 
-variable "aws_access_key" {
+variable "aws_access_key_id" {
   default = null
 }
 
-variable "aws_secret_key" {
+variable "aws_secret_access_key" {
   default = null
 }
 
